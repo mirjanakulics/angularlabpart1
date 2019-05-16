@@ -1,0 +1,20 @@
+<main>
+  <section>
+    <h1>TODO List</h1>
+    <p>A place to store the things you have to do!</p>
+    <form #form="ngForm" (ngSubmit)="addTodo(form)">
+        <input type="text" name="filter" placeholder="filter your todos" ngModel>
+        <ol>
+            <li *ngFor="let item of todos; index as i">
+              <div class="item_container">
+                  <p *ngIf="!item.completed" class="complete_btn" (click)="completeTask(i)">Complete</p>
+                  <p class="task" [ngClass]="{'completed': item.completed}">{{item.task}}</p>
+                  <p (click)="deleteTask(i)">X</p>
+              </div>
+            </li>
+          </ol>
+        <input type="text" name="todo" placeholder="add your to-do" ngModel>
+        <button class="add_btn">Add</button>
+      </form>
+  </section>
+</main>
